@@ -5,8 +5,49 @@
     <script src="http://code.highcharts.com/highcharts.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>
     <script>  
-
 		$(function () {
+			 
+			 $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/nyc?count=50', function(photos){
+	          var normal = 0;
+	          var mayfair = 0;
+	          var sierra = 0;
+	          var valencia = 0;
+	          var hefe = 0;
+	          var sutro = 0;
+	          var other = 0;
+	          for(i in photos) {
+	            console.log(photos[i].filter);
+	            for(j in photos[i].filter) {
+	              if(photos[i].filter[j] === "Normal") {
+	                normal++;
+	              }
+	              if(photos[i].filter[j] === "Mayfair") {
+	                mayfair++;
+	              }
+	              if(photos[i].filter[j] === "Sierra") {
+	                manhattan++;
+	              }
+	              if(photos[i].filter[j] === "Valencia") {
+	                valencia++;
+	              }
+	              if(photos[i].filter[j] === "Sutro") {
+	                sutro++;
+	              }
+	              if(photos[i].filter[j] !== "Sutro" && "Valencia" && "Sierra" && "Mayfair" && "Normal") {
+	                other++;
+	              }
+	            }
+	          }
+	          var data = [
+	            ['Normal', normal],
+	            ['Mayfair', mayfair],
+	            ['Sierra', sierra],
+	            ['Valencia', valencia],
+	            ['Sutro', sutro],
+	            ['Other', other],
+	          ]  
+
+
 		    $('#container').highcharts({
 		        chart: {
 		            plotBackgroundColor: null,
@@ -14,7 +55,7 @@
 		            plotShadow: false
 		        },
 		        title: {
-		            text: 'Browser<br>shares',
+		            text: 'Top Instagram<br>Filters!<br>(last 50)',
 		            align: 'center',
 		            verticalAlign: 'middle',
 		            y: 50
@@ -42,21 +83,10 @@
 		            type: 'pie',
 		            name: 'Browser share',
 		            innerSize: '50%',
-		            data: [
-		                ['Firefox',   45.0],
-		                ['IE',       26.8],
-		                ['Chrome', 12.8],
-		                ['Safari',    8.5],
-		                ['Opera',     6.2],
-		                {
-		                    name: 'Others',
-		                    y: 0.7,
-		                    dataLabels: {
-		                        enabled: false
-		                    }
-		                }
-		            ]
-		        }]
+		            data: data
+		                
+		                }]
+		        });
 		    });
 		});
 	</script>
