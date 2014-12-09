@@ -63,11 +63,13 @@
         var image = [];
         var locationLat = [];
         var locationLong = [];
+        var text = [];
         for(var i=0; i<response.length; i++) {
           if(response[i].location != null){
             image[i] = response[i].images.thumbnail.url;
             locationLat[i] = response[i].location.latitude;
             locationLong[i] = response[i].location.longitude;
+            text[i]=response[i].caption.text;
             }
         }
         
@@ -90,10 +92,14 @@
             position[i] = new google.maps.LatLng(lat[i], longi[i]);
             var markerOptions = {
                 position: position[i],
+                draggable: true,
                 map: map,
                 icon: img[i],
-
+                title: response[i].caption.text,
+                animation: google.maps.Animation.DROP,
+            
             };
+            
             // To add the marker to the map, use the 'map' property
             marker[i] = new google.maps.Marker(markerOptions);
           };
@@ -144,8 +150,11 @@
             position[i] = new google.maps.LatLng(lat[i], longi[i]);
             var markerOptions = {
                 position: position[i],
+                draggable: true,
                 map: map,
                 icon: img[i],
+                title: response[i].caption.text,
+                animation: google.maps.Animation.DROP,
 
             };
             // To add the marker to the map, use the 'map' property
@@ -199,8 +208,11 @@
             position[i] = new google.maps.LatLng(lat[i], longi[i]);
             var markerOptions = {
                 position: position[i],
+                draggable: true,
                 map: map,
                 icon: img[i],
+                title: response[i].caption.text,
+                animation: google.maps.Animation.DROP,
 
             };
             // To add the marker to the map, use the 'map' property
@@ -252,8 +264,11 @@
             position[i] = new google.maps.LatLng(lat[i], longi[i]);
             var markerOptions = {
                 position: position[i],
+                draggable: true,
                 map: map,
                 icon: img[i],
+                title: response[i].caption.text,
+                animation: google.maps.Animation.DROP,
 
             };
             // To add the marker to the map, use the 'map' property
@@ -304,8 +319,11 @@
             position[i] = new google.maps.LatLng(lat[i], longi[i]);
             var markerOptions = {
                 position: position[i],
+                draggable: true,
                 map: map,
                 icon: img[i],
+                title: response[i].caption.text,
+                animation: google.maps.Animation.DROP,
 
             };
             // To add the marker to the map, use the 'map' property
@@ -357,8 +375,11 @@
             position[i] = new google.maps.LatLng(lat[i], longi[i]);
             var markerOptions = {
                 position: position[i],
+                draggable: true,
                 map: map,
                 icon: img[i],
+                title: response[i].caption.text,
+                animation: google.maps.Animation.DROP,
 
             };
             // To add the marker to the map, use the 'map' property
