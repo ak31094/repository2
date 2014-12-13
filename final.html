@@ -57,21 +57,35 @@
     
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
     <script>
+
+    $(function () {
+    
+    //var counter1 = 0;
+
     $(document).ready(function(){
       $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/washingtonsquarepark', function(response){
         var image = [];
         var locationLat = [];
         var locationLong = [];
         var text = [];
+        var counter1 = 0;
+        
+        //if the location is not null, then create these variables 
         for(var i=0; i<response.length; i++) {
           if(response[i].location != null){
             image[i] = response[i].images.thumbnail.url;
             locationLat[i] = response[i].location.latitude;
             locationLong[i] = response[i].location.longitude;
             text[i]=response[i].caption.text;
+            counter1 = i++;
             }
         }
+        
+        console.log("Counter 1 =" + counter1)
         
         var drawImg = function(img,lat,longi){
           var map;
@@ -113,22 +127,27 @@
       drawImg(image,locationLat,locationLong); 
     });
   });
-
       
 
+      
+      //var counter2 = 0;
 
       $(document).ready(function(){
       $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/timesquare', function(response){
         var image = [];
         var locationLat = [];
         var locationLong = [];
+        var counter2 = 0;
+        
         for(var i=0; i<response.length; i++) {
           if(response[i].location != null){
             image[i] = response[i].images.thumbnail.url;
             locationLat[i] = response[i].location.latitude;
             locationLong[i] = response[i].location.longitude;
+            counter2 = i++;
             }
         }
+        console.log("Counter 2 =" + counter2)
         
         var drawImg = function(img,lat,longi){
           var map;
@@ -173,20 +192,25 @@
     
     
 
-
+      //var counter3 = 0;
 
       $(document).ready(function(){
       $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/unionsquarepark', function(response){
         var image = [];
         var locationLat = [];
         var locationLong = [];
+        var counter3 = 0;        
+
         for(var i=0; i<response.length; i++) {
           if(response[i].location != null){
             image[i] = response[i].images.thumbnail.url;
             locationLat[i] = response[i].location.latitude;
             locationLong[i] = response[i].location.longitude;
+            counter3 = i++;
             }
         }
+        
+        console.log("Counter 3 =" + counter3)
         
         var drawImg = function(img,lat,longi){
           var map;
@@ -230,19 +254,24 @@
   });
 
       
+      var counter4 = 0;
 
       $(document).ready(function(){
       $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/centralpark', function(response){
         var image = [];
         var locationLat = [];
         var locationLong = [];
+        //var counter4 = 0;
         for(var i=0; i<response.length; i++) {
           if(response[i].location != null){
             image[i] = response[i].images.thumbnail.url;
             locationLat[i] = response[i].location.latitude;
             locationLong[i] = response[i].location.longitude;
+            counter4 = i++;
             }
         }
+        
+        console.log("Counter 4=" + counter4)
         
         var drawImg = function(img,lat,longi){
           var map;
@@ -286,18 +315,25 @@
   });
 
 
+      var counter5 = 0;
+
       $(document).ready(function(){
       $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/madisonsquaregarden', function(response){
         var image = [];
         var locationLat = [];
         var locationLong = [];
+        //var counter5 = 0;
+
         for(var i=0; i<response.length; i++) {
           if(response[i].location != null){
             image[i] = response[i].images.thumbnail.url;
             locationLat[i] = response[i].location.latitude;
             locationLong[i] = response[i].location.longitude;
+            counter5 = i++;
             }
         }
+        
+        console.log("Counter 5 =" + counter5)
         
         var drawImg = function(img,lat,longi){
           var map;
@@ -342,18 +378,25 @@
 
 
 
+      var counter6 = 0;
+
       $(document).ready(function(){
       $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/grandcentral', function(response){
         var image = [];
         var locationLat = [];
         var locationLong = [];
+        //var counter6 = 0;
+
         for(var i=0; i<response.length; i++) {
           if(response[i].location != null){
             image[i] = response[i].images.thumbnail.url;
             locationLat[i] = response[i].location.latitude;
             locationLong[i] = response[i].location.longitude;
+            counter6 = i++;
             }
         }
+        
+        console.log("Counter 6 =" + counter6)
         
         var drawImg = function(img,lat,longi){
           var map;
@@ -398,6 +441,60 @@
 
 
 
+
+
+        //$(function () {
+            $('#container').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 1,//null,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Browser market shares at a specific website, 2014'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Browser share',
+                    data: [
+                        ['Firefox',   counter1],
+                        ['IE',       counter2],
+                        {
+                            name: 'Chrome',
+                            y: counter3,
+                            sliced: true,
+                            selected: true
+                        },
+                        ['Safari',    counter4],
+                        ['Opera',     counter5],
+                        ['Others',   counter6]
+                    ]
+                }]
+            });
+        });
+
+
+
+      
+
+
+
     </script>
 
 
@@ -422,6 +519,8 @@
     <div id="map-canvas5"></div>
     <br></br>
     <div id="map-canvas6"></div>
+    <br></br>
+    <div id="container" style="min-width: 300px; height=400px; max-width: 600px; margin: 0 auto"></div> 
 
 
 
