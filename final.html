@@ -158,6 +158,19 @@
         font-weight: normal;
       }
 
+      @import url(http://fonts.googleapis.com/css?family=Lobster);
+      h4 {
+        position: absolute;
+        font-family: 'Lobster', cursive;
+        text-align: center;
+        color: white;
+        font-size: 15px;
+        left: 87%;
+        top: 3600px;
+      }
+
+
+
     </style>
     
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -567,7 +580,7 @@
 
         $(document).ready(function () {
       
-        $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/nyc?count=10000000000', function(photos){
+        $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/nyc?count=100', function(photos){
           var washsq = 0;
           var timesq = 0;
           var unionsq = 0;
@@ -707,6 +720,8 @@
     
     <h3 id="graph">Comparative Graph</h3>
     <div id="container" style="height=400px; width: 50%; position: absolute; left: 30%; top: 3195px; opacity: 0.8; border-radius: 20px"></div> 
+
+    <h4 id="me"> by Andrey Kovalev</h3>
 
 
 
