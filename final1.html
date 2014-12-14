@@ -171,7 +171,7 @@
         
         $(document).ready(function () {
       
-        $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/washingtonsquarepark?count=100', function(photos){
+        $.getJSON('http://cooper-union-instagram-proxy.herokuapp.com/search/tag/nyc?count=1000', function(photos){
           var artsCulture = 0;
           var food = 0;
           var parks = 0;
@@ -183,22 +183,28 @@
           for(i in photos) {
             console.log(photos[i].tags);
             for(j in photos[i].tags) {
-              if(photos[i].tags[j].toLowerCase() == "art" || "beautiful" || "streetart" || "graffiti" || "music" || "musician" || "fashion") {
+              // var artsCulture = 0;
+              // var food = 0;
+              // var parks = 0;
+              // var sights = 0;
+              // var sports = 0;
+              // var education = 0;
+              if(photos[i].tags[j].toLowerCase() === ("art" || "beautiful" || "streetart" || "graffiti" || "music" || "musician" || "fashion")) {
                 artsCulture++;
               }
-              if(photos[i].tags[j].toLowerCase() == "food" || "breakfast" || "lunch" || "dinner" || "brunch" || "foodporn") {
+              if(photos[i].tags[j].toLowerCase() === ("food" || "breakfast" || "lunch" || "dinner" || "brunch" || "foodporn")) {
                 food++;
               }
-              if(photos[i].tags[j].toLowerCase() == "washingtonsquarepark" || "park" || "nature") {
+              if(photos[i].tags[j].toLowerCase() === ("washingtonsquarepark" || "park" || "nature")) {
                 parks++;
               }
-              if(photos[i].tags[j].toLowerCase() == "arch" || "beautiful" || "sightseeing" || "skyline" || "night" || "nite" || "citylights" || "view" || "skyscraper" || "highrise" || "cityscape" || "architecture" || "lights" || "dusk") {
+              if(photos[i].tags[j].toLowerCase() === ("arch" || "beautiful" || "sightseeing" || "skyline" || "night" || "nite" || "citylights" || "view" || "skyscraper" || "highrise" || "cityscape" || "architecture" || "lights" || "dusk")) {
                 sights++;
               }
-              if(photos[i].tags[j].toLowerCase() == "workflow" || "gym" || "usopen" || "nba" || "knicks" || "nets" || "nyknicks" || "bknets" || "fitness" || "workout") {
+              if(photos[i].tags[j].toLowerCase() === ("workflow" || "gym" || "usopen" || "nba" || "knicks" || "nets" || "nyknicks" || "bknets" || "fitness" || "workout")) {
                 sports++;
               }
-              if(photos[i].tags[j].toLowerCase() == "school" || "cooper" || "nyu" || "finals" || "exam" || "test") {
+              if(photos[i].tags[j].toLowerCase() === ("school" || "cooper" || "nyu" || "finals" || "exam" || "test")) {
                 education++;
               }
               // if(photos[i].tags[j].toLowerCase() !== "art" || "beautiful" || "streetart" || "graffiti" || "music" || "musician" || "fashion" || "food" || "breakfast" || "lunch" || "dinner" || "brunch" || "foodporn" || "park" || "nature" || "arch" || "sightseeing" || "skyline" || "night" || "nite" || "citylights" || "view" || "skyscraper" || "highrise" || "cityscape" || "architecture" || "lights" || "dusk" || "workflow" || "gym" || "usopen" || "nba" || "knicks" || "nets" || "nyknicks" || "bknets" || "fitness" || "workout" || "school" || "cooper" || "nyu" || "finals" || "exam" || "test") {
@@ -206,10 +212,20 @@
               // }
             }
           }
+
+          console.log("art =" + artsCulture)
+          console.log("food =" + food)
+          console.log("parks =" + parks)
+          console.log("sight =" + sights)
+          console.log("sport =" + sports)
+          console.log("edu =" + education)
+
+
+
           var data = [
             ['Arts & Culture', artsCulture],
             ['Food', food],
-            ['Parks', parks]
+            ['Parks', parks],
             ['Sight-Seeing', sights],
             ['Sports & Recreation', sports],
             ['Education', education],
